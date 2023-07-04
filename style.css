@@ -45,6 +45,10 @@ td {
   text-align: center;
 }
 
+td:hover {
+  background-color: lime;
+}
+
 input {
   width: 90%;
   padding: 5px;
