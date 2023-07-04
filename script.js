@@ -8,30 +8,18 @@ var currentMonth = currentDate.getMonth();
 // Function to update the month and year display
 function updateMonthYear() {
   var monthYearElement = document.getElementById("month-year");
-  monthYearElement.textContent = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+  monthYearElement.textContent = new Date(currentYear, currentMonth).toLocaleString("default", {
+    month: "long",
+    year: "numeric"
+  });
 }
 
-// Function to generate the calendar grid for the current month
+// Updated function to generate the calendar grid for the current month
 function generateCalendarGrid(year, month) {
-  var calendarGrid = document.getElementById("calendar-grid");
+  var calendarGridBody = document.querySelector("#calendar-grid tbody");
 
   // Clear previous calendar
-  calendarGrid.innerHTML = "";
-
-  // Create a new table element
-  var table = document.createElement("table");
-
-  // Create the table header row
-  var headerRow = document.createElement("tr");
-
-  // Create the table headers for the days of the week
-  var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  for (var i = 0; i < 7; i++) {
-    var th = document.createElement("th");
-    th.textContent = daysOfWeek[i];
-    headerRow.appendChild(th);
-  }
-  table.appendChild(headerRow);
+  calendarGridBody.innerHTML = "";
 
   // Get the first day of the month
   var firstDay = new Date(year, month, 1);
@@ -52,16 +40,19 @@ function generateCalendarGrid(year, month) {
         // Leave empty cells after the last day of the month
         cell.textContent = "";
       } else {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "input_" + date;
+        input.id = "input_" + date;
+        input.classList.add("calendar-input");
         cell.textContent = date;
+        cell.appendChild(input);
         date++;
       }
       row.appendChild(cell);
     }
-    table.appendChild(row);
+    calendarGridBody.appendChild(row);
   }
-
-  // Append the table to the calendar grid
-  calendarGrid.appendChild(table);
 }
 
 // Function to go to the previous month

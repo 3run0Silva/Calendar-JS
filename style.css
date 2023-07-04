@@ -1,3 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background: linear-gradient(to right, #87cefa, #1e90ff);
+  margin: 0;
+  padding: 0;
+}
+
+#calendar-container {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
 #header {
   display: flex;
   justify-content: space-between;
@@ -9,9 +25,17 @@
   font-size: 20px;
 }
 
+#calendar-grid-container {
+  overflow: auto;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
+}
+
+thead {
+  background-color: #f2f2f2;
 }
 
 th,
@@ -19,6 +43,13 @@ td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
+}
+
+input {
+  width: 90%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 button {
