@@ -14,7 +14,6 @@ function updateMonthYear() {
   });
 }
 
-// Updated function to generate the calendar grid for the current month
 function generateCalendarGrid(year, month) {
   var calendarGridBody = document.querySelector("#calendar-grid tbody");
 
@@ -29,31 +28,49 @@ function generateCalendarGrid(year, month) {
 
   // Create the calendar grid
   var date = 1;
+  var today = new Date();
+
   for (var i = 0; i < 6; i++) {
     var row = document.createElement("tr");
+
     for (var j = 0; j < 7; j++) {
       var cell = document.createElement("td");
+      var cellText = document.createElement("span");
+      cell.appendChild(cellText);
+
       if (i === 0 && j < firstDay.getDay()) {
-        // Leave empty cells before the first day of the month
-        cell.textContent = "";
+        // Display the text from the previous month in grayed-out style
+        var prevMonth = month - 1 < 0 ? 11 : month - 1;
+        var prevMonthYear = month - 1 < 0 ? year - 1 : year;
+        var prevMonthLastDay = new Date(prevMonthYear, prevMonth + 1, 0).getDate();
+        var prevMonthDate = prevMonthLastDay - (firstDay.getDay() - j) + 1;
+        cellText.textContent = prevMonthDate;
+        cellText.classList.add("prev-month");
       } else if (date > lastDay) {
-        // Leave empty cells after the last day of the month
-        cell.textContent = "";
-      } else {
-        var input = document.createElement("input");
-        input.type = "text";
-        input.name = "input_" + date;
-        input.id = "input_" + date;
-        input.classList.add("calendar-input");
-        cell.textContent = date;
-        cell.appendChild(input);
+        // Display the text from the next month in grayed-out style
+        var nextMonth = month + 1 > 11 ? 0 : month + 1;
+        var nextMonthYear = month + 1 > 11 ? year + 1 : year;
+        var nextMonthDate = date - lastDay;
+        cellText.textContent = nextMonthDate;
+        cellText.classList.add("next-month");
         date++;
+      } else {
+        // Display the text for the current month
+        cellText.textContent = date;
+        date++;
+        if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === date - 1) {
+          // Highlight the current date
+          cell.classList.add("current-date");
+        }
       }
+
       row.appendChild(cell);
     }
+
     calendarGridBody.appendChild(row);
   }
 }
+
 
 // Function to go to the previous month
 function goToPrevMonth() {
