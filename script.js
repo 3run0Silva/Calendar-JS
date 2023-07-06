@@ -57,7 +57,16 @@ function generateCalendarGrid(year, month) {
       } else {
         // Display the text for the current month
         cellText.textContent = date;
+
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "input_" + date;
+        input.id = "input_" + date;
+        input.classList.add("calendar-input");
+        cell.appendChild(input);
+
         date++;
+
         if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === date - 1) {
           // Highlight the current date
           cell.classList.add("current-date");
@@ -70,6 +79,7 @@ function generateCalendarGrid(year, month) {
     calendarGridBody.appendChild(row);
   }
 }
+
 
 
 // Function to go to the previous month

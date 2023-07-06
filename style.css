@@ -7,7 +7,7 @@ body {
 }
 
 #calendar-container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 20px auto;
   background-color: #fff;
   padding: 20px;
@@ -22,7 +22,7 @@ body {
 }
 
 #month-year {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 #calendar-grid-container {
@@ -41,7 +41,7 @@ thead {
 th,
 td {
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 12px;
   text-align: center;
 }
 
@@ -49,11 +49,12 @@ td:hover {
   background-color: lime;
 }
 
-input {
-  width: 90%;
-  padding: 5px;
+input.calendar-input {
+  width: 100%;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  box-sizing: border-box;
 }
 
 button {
