@@ -56,6 +56,19 @@ input.calendar-input {
   border: none;
   border-radius: 3px;
   box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+textarea.calendar-input {
+  width: 100%;
+  height: auto;
+  min-height: 70px;
+  max-height: 120px;
+  resize: none;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 button {

@@ -58,14 +58,14 @@ function generateCalendarGrid(year, month) {
         // Display the text for the current month
         cellText.textContent = date;
 
-        var input = document.createElement("input");
-        input.type = "text";
-        input.name = "input_" + date;
-        input.id = "input_" + date;
-        input.classList.add("calendar-input");
-        cell.appendChild(input);
+        var textarea = document.createElement("textarea");
+        textarea.name = "input_" + date;
+        textarea.id = "input_" + date;
+        textarea.classList.add("calendar-input");
+        cell.appendChild(textarea);
 
         date++;
+
 
         if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === date - 1) {
           // Highlight the current date
