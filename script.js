@@ -104,9 +104,14 @@ function goToNextMonth() {
   generateCalendarGrid(currentYear, currentMonth);
 }
 
+// Function to handle printing
+function handlePrint() {
+  window.print();
+}
+
 // Add event listeners to the previous and next buttons
-const prevBtn = document.getElementById("prev-btn");
-prevBtn.addEventListener("click", goToPrevMonth);
+const printBtn = document.getElementById("print-btn");
+printBtn.addEventListener("click", handlePrint);
 
 const nextBtn = document.getElementById("next-btn");
 nextBtn.addEventListener("click", goToNextMonth);
