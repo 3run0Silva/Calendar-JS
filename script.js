@@ -15,42 +15,45 @@ function updateMonthYear() {
 }
 
 function generateCalendarGrid(year, month) {
-  const calendarGridBody = document.querySelector("#calendar-grid tbody");
+  var calendarGridBody = document.querySelector("#calendar-grid tbody");
 
   // Clear previous calendar
   calendarGridBody.innerHTML = "";
 
   // Get the first day of the month
-  const firstDay = new Date(year, month, 1);
+  var firstDay = new Date(year, month, 1);
 
   // Get the number of days in the month
-  const lastDay = new Date(year, month + 1, 0).getDate();
+  var lastDay = new Date(year, month + 1, 0).getDate();
+
+  // Calculate the number of rows needed
+  var numRows = Math.ceil((firstDay.getDay() + lastDay) / 7);
 
   // Create the calendar grid
-  let date = 1;
-  const today = new Date();
+  var date = 1;
+  var today = new Date();
 
-  for (let i = 0; i < 6; i++) {
-    const row = document.createElement("tr");
+  for (var i = 0; i < numRows; i++) {
+    var row = document.createElement("tr");
 
-    for (let j = 0; j < 7; j++) {
-      const cell = document.createElement("td");
-      const cellText = document.createElement("span");
+    for (var j = 0; j < 7; j++) {
+      var cell = document.createElement("td");
+      var cellText = document.createElement("span");
       cell.appendChild(cellText);
 
       if (i === 0 && j < firstDay.getDay()) {
         // Display the text from the previous month in grayed-out style
-        const prevMonth = month - 1 < 0 ? 11 : month - 1;
-        const prevMonthYear = month - 1 < 0 ? year - 1 : year;
-        const prevMonthLastDay = new Date(prevMonthYear, prevMonth + 1, 0).getDate();
-        const prevMonthDate = prevMonthLastDay - (firstDay.getDay() - j) + 1;
+        var prevMonth = month - 1 < 0 ? 11 : month - 1;
+        var prevMonthYear = month - 1 < 0 ? year - 1 : year;
+        var prevMonthLastDay = new Date(prevMonthYear, prevMonth + 1, 0).getDate();
+        var prevMonthDate = prevMonthLastDay - (firstDay.getDay() - j) + 1;
         cellText.textContent = prevMonthDate;
         cellText.classList.add("prev-month");
       } else if (date > lastDay) {
         // Display the text from the next month in grayed-out style
-        const nextMonth = month + 1 > 11 ? 0 : month + 1;
-        const nextMonthYear = month + 1 > 11 ? year + 1 : year;
-        const nextMonthDate = date - lastDay;
+        var nextMonth = month + 1 > 11 ? 0 : month + 1;
+        var nextMonthYear = month + 1 > 11 ? year + 1 : year;
+        var nextMonthDate = date - lastDay;
         cellText.textContent = nextMonthDate;
         cellText.classList.add("next-month");
         date++;
@@ -58,14 +61,13 @@ function generateCalendarGrid(year, month) {
         // Display the text for the current month
         cellText.textContent = date;
 
-        const textarea = document.createElement("textarea");
+        var textarea = document.createElement("textarea");
         textarea.name = "input_" + date;
         textarea.id = "input_" + date;
         textarea.classList.add("calendar-input");
         cell.appendChild(textarea);
 
         date++;
-
 
         if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === date - 1) {
           // Highlight the current date
@@ -79,6 +81,8 @@ function generateCalendarGrid(year, month) {
     calendarGridBody.appendChild(row);
   }
 }
+
+
 
 // Function to go to the previous month
 function goToPrevMonth() {
