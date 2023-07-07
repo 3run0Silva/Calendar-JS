@@ -116,3 +116,19 @@ nextBtn.addEventListener("click", goToNextMonth);
 // Initial generation of the calendar grid
 updateMonthYear();
 generateCalendarGrid(currentYear, currentMonth);
+
+var menuToggle = document.getElementById("menu-toggle");
+var menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", function () {
+  menu.classList.toggle("open");
+});
+
+document.addEventListener("click", function (event) {
+  var isClickInsideMenu = menu.contains(event.target) || event.target === menuToggle;
+  if (!isClickInsideMenu && menu.classList.contains("open")) {
+    menu.classList.remove("open");
+  }
+});
+
+

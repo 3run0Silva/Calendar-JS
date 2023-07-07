@@ -6,6 +6,60 @@ body {
   padding: 0;
 }
 
+#menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 999;
+}
+
+#menu-toggle {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#menu-content {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 998;
+}
+
+#menu.open #menu-toggle .menu-icon {
+  background-color: transparent;
+}
+
+#menu.open #menu-toggle .menu-icon:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+#menu.open #menu-toggle .menu-icon:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+#menu.open #menu-content {
+  display: block;
+}
+
 #calendar-container {
   width: 60%;
   margin: 20px auto;
