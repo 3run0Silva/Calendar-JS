@@ -13,7 +13,7 @@ This is a simple calendar app that allows users to view and interact with a mont
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/00Bruno00/Calendar-JS.git`
+1. Clone the repository: `git clone https://github.com/User3ds/Calendar-JS.git`
 2. Open the index.html file in a web browser.
 
 ## Usage
