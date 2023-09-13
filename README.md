@@ -29,7 +29,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgements
 
 - [Font Awesome](https://fontawesome.com) for the calendar icons.
-- [OpenAI](https://openai.com) for the ChatGPT model used to assist in creating this README.
+- [OpenAI](https://openai.com) for the ChatGPT model used to assist in creating this README and comment the code.
 
 ## Contributing
 
